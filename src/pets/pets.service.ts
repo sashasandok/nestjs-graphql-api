@@ -13,7 +13,11 @@ export class PetsService {
     return this.petsRepository.save(newPet)
   }
 
-  findAll(): Promise<Pet[]> {
+  async findAll(): Promise<Pet[]> {
     return this.petsRepository.find()
+  }
+
+  findOne(id: number): Promise<Pet> {
+    return this.petsRepository.findOneOrFail({ where: { id } })
   }
 }
